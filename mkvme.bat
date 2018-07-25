@@ -51,6 +51,7 @@ rem But you can add more file types by adding if-statements below
 rem
 rem You can also set isValidVideoFile to 1 to just support all files
 set isValidVideoFile=0
+if %~x1==.mp4 set isValidVideoFile=1
 if %~x1==.avi set isValidVideoFile=1
 if %~x1==.AVI set isValidVideoFile=1
 if %~x1==.mkv set isValidVideoFile=1
@@ -74,7 +75,7 @@ if !isValidVideoFile!==1 (
         rem Feel free to tinker with the ffmpeg settings below!
         rem But basically this transcodes all video streams to H264 and copies all audio and subtitle streams by default
         rem -ss 00:15:38 -t 00:00:20 
-        ffmpeg -i "%inputFileName%" -map 0 -c:v libx264 -preset %x264Preset% -crf %crfLevel% -c:a copy -c:s copy "!outputFileName!" > "!logFileName!" 2>&1
+        ffmpeg -i "%inputFileName%" -map 0 -c:v libx264 -preset %x264Preset% -crf %crfLevel% -c:a copy -c:s copy "!outputFileName!"
         echo Transcode End:   !DATE! !TIME!
     ) else (
         echo SKIPPING FILE - %inputFileName%
