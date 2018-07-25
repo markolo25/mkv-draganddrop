@@ -55,6 +55,7 @@ if %~x1==.avi set isValidVideoFile=1
 if %~x1==.AVI set isValidVideoFile=1
 if %~x1==.mkv set isValidVideoFile=1
 if %~x1==.MKV set isValidVideoFile=1
+if %~x1==.TS  set isValidVideoFile=1
 
 cd /D "%~dp1"
 
